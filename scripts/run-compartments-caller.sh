@@ -30,7 +30,7 @@ while getopts "i:o:b:c:e:r:" opt; do
 done
 
 
-COOL_PATH=$(python /d1/get_cooler_path.py $input --binsize $binsize)
+COOL_PATH=$(python /usr/local/bin/get_cooler_path.py $input --binsize $binsize)
 
 FILE_BASE=$(basename $input)
 FILE_NAME=${FILE_BASE%%.*}
@@ -45,9 +45,6 @@ then
     reference_track="--reference-track $reference_track"
 fi
 
-echo $num_eig_vec
-echo $binsize
-echo $contact_type
 
 cooltools call-compartments $COOL_PATH \
   --out-prefix $outdir/$FILE_NAME \

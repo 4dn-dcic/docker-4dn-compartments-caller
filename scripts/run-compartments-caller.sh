@@ -2,7 +2,7 @@
 shopt -s extglob
 binsize=-1
 reference_track=''
-contact_type=''
+contact_type="cis"
 num_eig_vec=3
 
 printHelpAndExit() {
@@ -10,7 +10,7 @@ printHelpAndExit() {
     echo "-i input_mcool : Input file in .mcool format"
     echo "-o outdir : Output directory"
     echo "-b binsize : Default highest resolution"
-    echo "-c contact_type : Type of the contacts perform eigen-value decomposition on. (cis or trans)"
+    echo "-c contact_type : Type of the contacts perform eigen-value decomposition on (cis or trans). Default 'cis'."
     echo "-e num_eig_vec: Number of eigen vectors to compute (default 3)"
     echo "-r reference_track: Reference track for orienting and ranking eigenvectors"
     exit "$1"
@@ -30,7 +30,7 @@ while getopts "i:o:b:c:e:r:" opt; do
 done
 
 
-COOL_PATH=$(python /usr/local/bin/get_cooler_path.py $input --binsize $binsize)
+COOL_PATH=$(python /d1/get_cooler_path.py $input --binsize $binsize)
 
 FILE_BASE=$(basename $input)
 FILE_NAME=${FILE_BASE%%.*}
@@ -44,6 +44,10 @@ if [[ ! -z $reference_track ]]
 then
     reference_track="--reference-track $reference_track"
 fi
+
+echo $num_eig_vec
+echo $binsize
+echo $contact_type
 
 cooltools call-compartments $COOL_PATH \
   --out-prefix $outdir/$FILE_NAME \

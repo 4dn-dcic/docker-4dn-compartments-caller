@@ -14,33 +14,46 @@ inputs:
   mcoolfile:
     type: File
     inputBinding:
+      separate: true
+      prefix: "-i"
       position: 1
+
+  outdir:
+    type: string
+    inputBinding:
+      separate: true
+      prefix: "-o"
+      position: 2
+    default: "."
 
   binsize:
     type: int
     inputBinding:
-      position: 2
+      separate: true
+      prefix: "-b"
+      position: 3
 
   contact_type:
     type: string
     inputBinding:
-      position: 3
-
-  reference_track:
-    type: 
-    inputBinding:
+      separate: true
+      prefix: "-c"
       position: 4
-      
+
   num_eig_vec:
     type: int
     inputBinding:
+      separate: true
+      prefix: "-e"
       position: 5
-      
-  outdir:
-    type: string
+
+  reference_track:
+    type: [File, string]
     inputBinding:
+      separate: true
+      prefix: "-r"
       position: 6
-    default: "."
+    default: ''
 
 outputs:
   bwfile:
@@ -48,4 +61,4 @@ outputs:
     outputBinding:
       glob: "$(inputs.outdir + '/' + '*.bw')"
 
-baseCommand: ["run-insulator-score-caller.sh"]
+baseCommand: ["run-compartments-caller.sh"]

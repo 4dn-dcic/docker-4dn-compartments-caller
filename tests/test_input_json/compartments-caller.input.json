@@ -1,0 +1,13 @@
+{
+   "mcoolfile": {
+       "class": "File",
+       "path": "../test_files/test.mcool"
+   },
+   "outdir":{
+       "class": "File",
+       "path": "../test_files/test.mcool"
+   },
+   "binsize": 50000,
+   "contact_type": "cis",
+   "num_eig_vec": 3
+}

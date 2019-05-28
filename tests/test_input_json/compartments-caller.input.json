@@ -1,7 +1,7 @@
 {
    "mcoolfile": {
        "class": "File",
-       "path": "../test_files/test.mcool"
+       "path": "../test_files/test.multires.cool"
    },
    "binsize": -1,
    "contact_type": "cis",

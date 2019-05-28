@@ -1,23 +1,53 @@
 # !/bin/bash
+shopt -s extglob
+binsize=-1
+reference_track=''
+contact_type=''
+num_eig_vec=3
 
-INPUT=$1
-BINSIZE=$2
-CONTACT_TYPE=$3
-NUM_EIG_VEC=$4
-OUTDIR=$5
+printHelpAndExit() {
+    echo "Usage: ${0##*/} [-b binsize] [-r reference_track] [-c contact_type] [-e num_eig_vec] [-o outdir] -i input_mcool"
+    echo "-i input_mcool : Input file in .mcool format"
+    echo "-o outdir : Output directory"
+    echo "-b binsize : Default highest resolution"
+    echo "-c contact_type : Type of the contacts perform eigen-value decomposition on. (cis or trans)"
+    echo "-e num_eig_vec: Number of eigen vectors to compute (default 3)"
+    echo "-r reference_track: Reference track for orienting and ranking eigenvectors"
+    exit "$1"
+}
 
-COOL_PATH=$(python /d1/get_compartments.py $INPUT --binsize $BINSIZE)
+while getopts "i:o:b:c:e:r:" opt; do
+    case $opt in
+        i) input=$OPTARG;;
+        o) outdir=$OPTARG;;
+        b) binsize=$OPTARG;;
+        c) contact_type=$OPTARG;;
+        e) num_eig_vec=$OPTARG;;
+        r) reference_track=$OPTARG;;
+        h) printHelpAndExit 0;;
+        [?]) printHelpAndExit 1;;
+        esac
+done
 
-FILE_BASE=$(basename $INPUT)
+
+COOL_PATH=$(python /usr/local/bin/get_cooler_path.py $input --binsize $binsize)
+
+FILE_BASE=$(basename $input)
 FILE_NAME=${FILE_BASE%%.*}
 
-if [ ! -d "$OUTDIR" ]
+if [ ! -d "$outdir" ]
 then
-    mkdir $OUTDIR
+    mkdir $outdir
+fi
+
+if [[ ! -z $reference_track ]]
+then
+    reference_track="--reference-track $reference_track"
 fi
 
 cooltools call-compartments $COOL_PATH \
-  --out-prefix $OUTDIR/$FILE_NAME \
-  --contact-type $CONTACT_TYPE \
-  --n-eigs $NUM_EIG_VEC \
+  --out-prefix $outdir/$FILE_NAME \
+  --contact-type $contact_type \
+  $REFERENCE_TRACK \
+  --n-eigs $num_eig_vec \
   --bigwig

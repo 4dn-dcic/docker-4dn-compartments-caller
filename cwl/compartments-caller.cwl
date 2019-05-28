@@ -48,7 +48,7 @@ inputs:
       position: 5
 
   reference_track:
-    type: [File, string]
+    type: string
     inputBinding:
       separate: true
       prefix: "-r"

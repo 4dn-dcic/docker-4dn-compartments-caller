@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 shopt -s extglob
 binsize=-1
 reference_track=''

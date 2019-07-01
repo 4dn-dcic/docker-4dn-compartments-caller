@@ -35,12 +35,11 @@ def main(mcoolfile, binsize):
             sys.exit()
 
     # Creates a cooler object
-    if old_version:
+    if old_version and binsize == -1:
         res_list = []
         for res in cooler_list:
             res_list.append(int(res.split('/')[-1]))
-            res_index = max(res_list)
-
+        res_index = max(res_list)
         cooler_path = str(f) + '::' + str(res_index)
     else:
         cooler_path = str(f) + '::' + cooler_list[binsize_list.index(binsize)]

@@ -1,6 +1,6 @@
 sudo: required
 language: c python
-python: 3.6
+python: 3.7
 os: linux
 services:
   - docker

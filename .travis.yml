@@ -4,9 +4,9 @@ python: 3.6
 os: linux
 services:
   - docker
- 
+
 env:
-  - LOCAL_NAME=docker-4dn-compartments-test REMOTE_NAME=4dndcic/4dn-compartments-test
+  - LOCAL_NAME=docker-4dn-compartments-caller REMOTE_NAME=4dndcic/4dn-compartments-caller
 
 install:
   - docker build -t $LOCAL_NAME .
@@ -30,7 +30,7 @@ after_success:
       if [ "$TRAVIS_PULL_REQUEST" != false ]; then
         docker tag $LOCAL_NAME $REMOTE_NAME:$TRAVIS_PULL_REQUEST_BRANCH;
         docker push $REMOTE_NAME:$TRAVIS_PULL_REQUEST_BRANCH;
-      else 
+      else
         docker tag $LOCAL_NAME $REMOTE_NAME:latest;
         docker push $REMOTE_NAME:latest;
       fi

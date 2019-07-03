@@ -6,7 +6,7 @@ cwlVersion: v1.0
 
 requirements:
 - class: DockerRequirement
-  dockerPull: "4dndcic/compartments-test:latest"
+  dockerPull: "4dndcic/compartments-caller:v1.1"
 
 - class: "InlineJavascriptRequirement"
 

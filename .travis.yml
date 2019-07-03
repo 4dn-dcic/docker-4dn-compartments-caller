@@ -6,7 +6,7 @@ services:
   - docker
  
 env:
-  - LOCAL_NAME=docker-4dn-compartments-caller REMOTE_NAME=4dndcic/4dn-compartments-caller
+  - LOCAL_NAME=docker-4dn-compartments-test REMOTE_NAME=4dndcic/4dn-compartments-test
 
 install:
   - docker build -t $LOCAL_NAME .

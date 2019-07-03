@@ -22,7 +22,7 @@ before_script:
   - chmod +x tests/tests_cwl.sh
 
 script:
-  - tests/tests_cwl.sh compartments-caller
+  - tests/tests_cwl.sh compartments-test
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";

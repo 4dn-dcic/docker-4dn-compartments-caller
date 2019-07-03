@@ -19,10 +19,10 @@ RUN apt-get update -y && apt-get install -y \
     libssl-dev
 
 # installing conda
-RUN wget https://repo.continuum.io/miniconda/Miniconda3-4.5.12-Linux-x86_64.sh && bash Miniconda3-4.5.12-Linux-x86_64.sh -p /miniconda3 -b
+RUN wget https://repo.continuum.io/miniconda/Miniconda3-4.3.31-Linux-x86_64.sh && bash Miniconda3-4.3.31-Linux-x86_64.sh -p /miniconda3 -b
 ENV PATH=/miniconda3/bin:$PATH
 RUN conda update -y conda \
-    && rm Miniconda3-4.5.12-Linux-x86_64.sh
+    && rm Miniconda3-4.3.31-Linux-x86_64.sh
 
 #Setting the enviroment
 COPY environment.yml .

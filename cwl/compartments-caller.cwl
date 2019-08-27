@@ -49,8 +49,8 @@ inputs:
 
   reference_track:
     type:
-      -null
-      -File
+      -"null"
+      -"File"
     inputBinding:
       separate: true
       prefix: "-r"

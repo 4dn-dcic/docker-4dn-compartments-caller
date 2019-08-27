@@ -18,6 +18,7 @@ dependencies:
     - parallel
     - pyfaidx==0.5.4.1
     - pysam==0.15.0
+    - ucsc-bedgraphtobigwig
     - pip:
         - git+https://github.com/mirnylab/pairsamtools
         - git+https://github.com/mirnylab/cooltools.git@v0.2.0

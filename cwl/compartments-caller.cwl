@@ -48,12 +48,13 @@ inputs:
       position: 5
 
   reference_track:
-    type: string
+    type:
+      -null
+      -File
     inputBinding:
       separate: true
       prefix: "-r"
       position: 6
-    default: ''
 
 outputs:
   bwfile:

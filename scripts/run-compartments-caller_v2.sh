@@ -26,4 +26,4 @@ fi
 #                                           --perc_top $PERC_TOP --perc_bottom $PERC_BOTTOM --partition $PARTITION \
 #                                           $INPUT $OUTDIR $FILE_NAME
 
-python /usr/local/bin/get_compartments.py --contact_type $CONTACT_TYPE --binsize $BINSIZE --sort_metric $SORT_METRIC $INPUT $PHASING_TRACK $OUTDIR
+python /usr/local/bin/get_compartments.py --contact_type $CONTACT_TYPE --binsize $BINSIZE --sort_metric $SORT_METRIC $INPUT $PHASING_TRACK $OUTDIR $FILE_NAME

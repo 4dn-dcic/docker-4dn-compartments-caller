@@ -14,51 +14,38 @@ inputs:
   mcoolfile:
     type: File
     inputBinding:
-      separate: true
-      prefix: "-i"
       position: 1
 
   reference_track:
     type: File
     inputBinding:
-      separate: true
-      prefix: "-r"
       position: 2
 
   outdir:
     type: string
     inputBinding:
-      separate: true
-      prefix: "-o"
       position: 3
     default: "."
 
   binsize:
     type: int
     inputBinding:
-      separate: true
-      prefix: "-b"
       position: 4
 
   contact_type:
     type: string
     inputBinding:
-      separate: true
-      prefix: "-c"
       position: 5
 
   num_eig_vec:
     type: int
     inputBinding:
-      separate: true
-      prefix: "-e"
       position: 6
+    default: 3
 
   sort_metric:
     type: string
     inputBinding:
-      separate: true
-      prefix: "-c"
       position: 7
 
 outputs:

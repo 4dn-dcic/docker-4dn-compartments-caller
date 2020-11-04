@@ -7,8 +7,8 @@ BINSIZE=$4
 CONTACT_TYPE=$5
 N_EIGS=$6
 # IGNORE_DIAGS=$7
-# CLIP_PERCENTILE=$8
 SORT_METRIC=$7
+CLIP_PERCENTILE=$8
 # PERC_TOP=$10
 # PERC_BOTTOM=$11
 # PARTITION=$12
@@ -26,4 +26,4 @@ fi
 #                                           --perc_top $PERC_TOP --perc_bottom $PERC_BOTTOM --partition $PARTITION \
 #                                           $INPUT $OUTDIR $FILE_NAME
 
-python /usr/local/bin/get_compartments.py --contact_type $CONTACT_TYPE --binsize $BINSIZE --n_eigs $N_EIGS --sort_metric $SORT_METRIC $INPUT $PHASING_TRACK $OUTDIR $FILE_NAME
+python /usr/local/bin/get_compartments.py --contact_type $CONTACT_TYPE --binsize $BINSIZE --n_eigs $N_EIGS --sort_metric $SORT_METRIC --clip_percentile $CLIP_PERCENTILE $INPUT $PHASING_TRACK $OUTDIR $FILE_NAME

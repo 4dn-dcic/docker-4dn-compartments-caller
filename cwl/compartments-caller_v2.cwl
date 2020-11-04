@@ -48,6 +48,11 @@ inputs:
     inputBinding:
       position: 7
 
+  clip_percentile:
+    type: float
+    inputBinding:
+      position: 8
+
 outputs:
   bwfile:
     type: File

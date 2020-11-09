@@ -16,7 +16,7 @@ import pandas as pd
 @click.option('--binsize', default=-1)
 @click.option('--n_eigs', default=3)
 @click.option('--ignore_diags', default=None)
-@click.option('--clip_percentile', default=0)
+@click.option('--clip_percentile', default=99.9)
 @click.option('--sort_metric', default=None)
 @click.option('--perc_top', default=99.95)
 @click.option('--perc_bottom', default=1)

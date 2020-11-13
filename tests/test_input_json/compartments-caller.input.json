@@ -1,9 +1,10 @@
 {
    "mcoolfile": {
        "class": "File",
-       "path": "../test_files/test.multires.cool"
+       "path": "../test_files/test_file.mcool"
    },
-   "binsize": -1,
-   "contact_type": "cis",
-   "num_eig_vec": 3
+   "reference_track": {
+       "class": "File",
+       "path": "../test_files/hg38_nuc_250000_gc.bedGraph.gz"
+   }
 }

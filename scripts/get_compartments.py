@@ -15,15 +15,16 @@ import pandas as pd
 @click.option('--contact_type', default='cis')
 @click.option('--binsize', default=-1)
 @click.option('--n_eigs', default=3)
-@click.option('--ignore_diags', default=None)
+@click.option('--ignore_diags', default=-1)
 @click.option('--clip_percentile', default=99.9)
 @click.option('--sort_metric', default=None)
 @click.option('--perc_top', default=99.95)
-@click.option('--perc_bottom', default=1)
+@click.option('--perc_bottom', default=1.0)
 @click.option('--partition', default=None)
 def main(mcoolfile, phasing_track, outdir, filename, contact_type, binsize, n_eigs, ignore_diags, clip_percentile, sort_metric, perc_top, perc_bottom, partition):
+    if ignore_diags == -1:
+        ignore_diags = None
     f = mcoolfile
-
     # Get the list of resolutions in the mcool file
     cooler_list = cooler.fileops.list_coolers(f)
     old_version = False

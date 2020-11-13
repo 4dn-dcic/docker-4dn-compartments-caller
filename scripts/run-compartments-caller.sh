@@ -1,54 +1,26 @@
 #!/bin/bash
-shopt -s extglob
-binsize=-1
-reference_track=''
-contact_type="cis"
-num_eig_vec=3
 
-printHelpAndExit() {
-    echo "Usage: ${0##*/} [-b binsize] [-r reference_track] [-c contact_type] [-e num_eig_vec] [-o outdir] -i input_mcool"
-    echo "-i input_mcool : Input file in .mcool format"
-    echo "-o outdir : Output directory"
-    echo "-b binsize : Default highest resolution"
-    echo "-c contact_type : Type of the contacts perform eigen-value decomposition on (cis or trans). Default 'cis'."
-    echo "-e num_eig_vec: Number of eigen vectors to compute (default 3)"
-    echo "-r reference_track: Reference track for orienting and ranking eigenvectors"
-    exit "$1"
-}
+INPUT=$1
+PHASING_TRACK=$2
+OUTDIR=$3
+BINSIZE=$4
+CONTACT_TYPE=$5
+N_EIGS=$6
+SORT_METRIC=$7
+CLIP_PERCENTILE=$8
+IGNORE_DIAGS=$9
+PERC_TOP=${10}
+PERC_BOTTOM=${11}
 
-while getopts "i:o:b:c:e:r:" opt; do
-    case $opt in
-        i) input=$OPTARG;;
-        o) outdir=$OPTARG;;
-        b) binsize=$OPTARG;;
-        c) contact_type=$OPTARG;;
-        e) num_eig_vec=$OPTARG;;
-        r) reference_track=$OPTARG;;
-        h) printHelpAndExit 0;;
-        [?]) printHelpAndExit 1;;
-        esac
-done
-
-
-COOL_PATH=$(python /usr/local/bin/get_cooler_path.py $input --binsize $binsize)
-
-FILE_BASE=$(basename $input)
+FILE_BASE=$(basename $INPUT)
 FILE_NAME=${FILE_BASE%%.*}
 
-if [ ! -d "$outdir" ]
+if [ ! -d "$OUTDIR" ]
 then
-    mkdir $outdir
+    mkdir $OUTDIR
 fi
 
-if [[ ! -z $reference_track ]]
-then
-    reference_track="--reference-track $reference_track"
-fi
+python /usr/local/bin/get_compartments.py --contact_type $CONTACT_TYPE --binsize $BINSIZE --n_eigs $N_EIGS --ignore_diags $IGNORE_DIAGS --clip_percentile $CLIP_PERCENTILE --sort_metric $SORT_METRIC --perc_top $PERC_TOP --perc_bottom $PERC_BOTTOM  $INPUT $PHASING_TRACK $OUTDIR $FILE_NAME
 
 
-cooltools call-compartments $COOL_PATH \
-  --out-prefix $outdir/$FILE_NAME \
-  --contact-type $contact_type \
-  $REFERENCE_TRACK \
-  --n-eigs $num_eig_vec \
-  --bigwig
+# python /usr/local/bin/get_compartments.py --contact_type $CONTACT_TYPE --binsize $BINSIZE --n_eigs $N_EIGS --sort_metric $SORT_METRIC --clip_percentile $CLIP_PERCENTILE $INPUT $PHASING_TRACK $OUTDIR $FILE_NAME

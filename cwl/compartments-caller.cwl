@@ -58,8 +58,7 @@ inputs:
     default: 99.9
 
   ignore_diags:
-    type:
-      - int
+    type: int
     inputBinding:
       position: 9
     default: -1

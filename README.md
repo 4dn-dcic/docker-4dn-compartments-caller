@@ -62,7 +62,7 @@ docker run 4dndcic/4dn-compartments-caller <run-xx.sh> <arg1> <arg2> ...
 docker run -v /data1/:/d1/:rw -v /data2/:/d2/:rw 4dndcic/4dn-compartments-caller <run-xx.sh> /d1/file1 /d2/file2 ...
 ```
 
-### run-4dn-compartments-caller.sh
+### run-compartments-caller.sh
 This calls the 'get_compartments.py' file which gets the diamond insulation scores and boundaries from mcool files produced by Hi-C data
 and outputs them in bigwig and bed format respectively.
 * Input: a mcool file

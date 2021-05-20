@@ -1,0 +1,30 @@
+channels:
+    - conda-forge
+    - defaults
+    - bioconda
+dependencies:
+    - pip==19.1
+    - numpy==1.15.4
+    - scipy==1.1.0
+    - cython==0.28.5
+    - matplotlib==3.0.1
+    - seaborn==0.9.0
+    - bokeh==0.13.0
+    - pandas==0.23.4
+    - h5py==2.8.0
+    - numba==0.40.0
+    - dask==0.19.3
+    - cytoolz==0.9.0.1
+    - parallel
+    - pyfaidx==0.5.4.1
+    - pysam==0.15.0
+    - ucsc-bedgraphtobigwig
+    - pip:
+        - cooltools==0.3.2
+        - git+https://github.com/mirnylab/pairsamtools
+        - git+https://github.com/nvictus/lavaburst.git
+        - git+https://github.com/nvictus/pybbi@e8a6ea750860ceb9f125f2366393cb0c11b1f1fc
+        - bioframe==0.0.7
+        - cooler==0.8.3
+        - multiprocess==0.70.6.1
+        - s3fs==0.1.6
